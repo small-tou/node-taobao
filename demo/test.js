@@ -1,5 +1,4 @@
 var Taobao = require("../lib/index.js");
-var Weibo=require("/Applications/XAMPP/htdocs/node/weibov2/lib/weibo2.js")
 var underscore=require("underscore");
 var path=require("path")
 var config = {
@@ -66,20 +65,20 @@ app.get("/auth", app_auth.auth)
 app.get("/sina_auth_cb", app_auth.sina_auth_cb)
 //中间页面，提醒用户认证成功
 app.get('/oauth', function (req, res) {
-  var config = {
-    app_key:"21261604",
-    app_secret:"31ef78b08e193a496c6647bedf0dfa3a",
-    redirect_uri:"http://127.0.0.1:8080/sina_auth_cb",
-    access_token:req.cookies.token
-}
+    var config = {
+        app_key:"21261604",
+        app_secret:"31ef78b08e193a496c6647bedf0dfa3a",
+        redirect_uri:"http://127.0.0.1:8080/sina_auth_cb",
+        access_token:req.cookies.token
+    }
 
-var api=new Taobao(config)
-api.taobaoke['items.detail.get']({
-    nick:"xinyu1987326",
-    num_iids:"13210257235",
-    fields:"click_url,title,nick,shop_click_url,item_img"
-},function(error,data){
-    console.log(formatjson(data))
-})
+    var api=new Taobao(config)
+    api.taobaoke['items.detail.get']({
+        nick:"xinyu1987326",
+        num_iids:"13210257235",
+        fields:"click_url,title,nick,shop_click_url,item_img"
+    },function(error,data){
+        console.log(formatjson(data))
+    })
     res.render("oauth.html")
 });
