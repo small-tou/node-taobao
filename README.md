@@ -3,6 +3,15 @@ node-taobao
 
 taobao api的nodejs sdk
 
+构建中，勿用于生产环境
+
+###支持的api（增加中）
+
+this.taobaoke=this._taobaoke();
+    this.products=this._products();
+    this.user=this._user();
+    this.users=this._users();
+    this.item=this._item();
 
 ###调用示例（oauth认证和测试一个淘客接口）
 
