@@ -4,8 +4,10 @@ var path=require("path")
 var config = {
     app_key:"21261604",
     app_secret:"31ef78b08e193a496c6647bedf0dfa3a",
-    redirect_uri:"http://127.0.0.1:8080/sina_auth_cb"
+    redirect_uri:"http://127.0.0.1:8080/sina_auth_cb",
+    access_token:"6200822e4b2bcf77103f6d5490ded3ZZab0c909054b60a958804864"
 }
+
 var formatjson = require('formatjson');
 var app_auth = {
     auth:function (req, res) {
@@ -73,12 +75,19 @@ app.get('/oauth', function (req, res) {
     }
 
     var api=new Taobao(config)
-    api.taobaoke['items.detail.get']({
-        nick:"xinyu1987326",
-        num_iids:"13210257235",
-        fields:"click_url,title,nick,shop_click_url,item_img"
-    },function(error,data){
-        console.log(formatjson(data))
-    })
+//    api.taobaoke['items.detail.get']({
+//        nick:"xinyu1987326",
+//        num_iids:"13210257235",
+//        fields:"click_url,title,nick,shop_click_url,item_img"
+//    },function(error,data){
+//        console.log(formatjson(data))
+//    })
+    
+    api.products['search']({
+            q:"衣服",
+            fields:"click_url,title,item_img"
+        },function(error,data){
+            console.log(data)
+        })
     res.render("oauth.html")
 });
